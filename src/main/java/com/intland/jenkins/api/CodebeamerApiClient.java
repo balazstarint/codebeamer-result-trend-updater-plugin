@@ -30,6 +30,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class CodebeamerApiClient {
     private final int HTTP_TIMEOUT = 10000;
@@ -153,7 +154,7 @@ public class CodebeamerApiClient {
     }
 
     private File createTempFile(String newContent, String oldContent) throws IOException{
-        final File tempFile = File.createTempFile("tmpfile", "csv");
+        final File tempFile = Files.createTempFile("tmpfile", "csv").toFile();
         tempFile.deleteOnExit();
         FileWriter fileWriter = null;
 
